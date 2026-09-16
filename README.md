@@ -27,6 +27,7 @@ cd CPE333
 - `ps02/` – Problem Session 2: process creation and pipes.
 - `ps03/` – Problem Session 3: process monitoring, job control, and scheduling.
 - `ps04/` – Problem Session 4: C storage classes, PIE vs `-no-pie`, and dynamic memory.
+- `ps05/` – Problem Session 5: virtual memory and VM monitoring.
 
 Build PS02 programs:
 
