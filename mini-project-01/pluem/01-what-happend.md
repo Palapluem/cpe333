@@ -36,7 +36,7 @@ The initial build environment evidence showed approximately 29–31 GB free on `
 
 **Figure 1. Build environment and available resources.**
 
-`[Screenshot missing locally: 02_build_environment_ready.png]`
+`[Screenshot not supplied in the ZIP: 02_build_environment_ready.png]`
 
 The terminal evidence for this section is `05-build-environment.txt` in `~/cpe333-kernel-work/pluem/evidence/`.
 
@@ -62,7 +62,7 @@ The dependency installation also provided the required ARM64 build toolchain. Th
 
 **Figure 2. Source repositories enabled.**
 
-`[Screenshot missing locally: 01_source_repositories_enabled.png]`
+![Figure 2. Source repositories enabled.](evidence/screenshots/01-source-repositories-enabled.png)
 
 Evidence files:
 
@@ -101,9 +101,13 @@ fakeroot debian/rules clean
 
 The cleanup was completed before the first compilation attempt.
 
-**Figure 3. Kernel source downloaded and prepared.**
+**Figure 3a. Kernel source workspace after the source download.**
 
-`[Screenshot missing locally: 03_kernel_source_downloaded.png]`
+![Figure 3a. Kernel source workspace after the source download.](evidence/screenshots/02-kernel-source-download.png)
+
+**Figure 3b. Source package target, original changelog, and source-tree size.**
+
+![Figure 3b. Source package target, original changelog, and source-tree size.](evidence/screenshots/03-kernel-source-ready.png)
 
 Evidence files:
 
@@ -124,7 +128,7 @@ No other changelog entry was changed. The original changelog was preserved in th
 
 **Figure 4. Kernel ABI changed from `31` to `999`.**
 
-`[Screenshot missing locally: 04_kernel_abi_999.png]`
+![Figure 4. Kernel ABI changed from `31` to `999`.](evidence/screenshots/04-kernel-abi-999.png)
 
 The exact one-line diff is recorded in `08-abi-modification.txt`.
 
@@ -173,13 +177,19 @@ CONCURRENCY_LEVEL=2 fakeroot debian/rules binary-generic
 
 The resumed output was appended to the existing build log. The resumed build completed successfully with exit code `0`.
 
-**Figure 5. Kernel compilation in progress.**
+**Figure 5a. Kernel compilation in progress.**
 
-`[Screenshot missing locally: 05_kernel_compilation.png]`
+![Figure 5a. Kernel compilation in progress.](evidence/screenshots/05-kernel-compilation-progress-01.png)
+
+**Figure 5b. Continued compilation with the build-resource monitor.**
+
+![Figure 5b. Continued compilation with the build-resource monitor.](evidence/screenshots/06-kernel-compilation-progress-02.png)
+
+The second compilation capture contains transient `libfakeroot internal error: payload not recognized!` messages from the live build output. They did not prevent the resumed build from completing: the authoritative build result was exit code `0` and the expected packages were generated.
 
 **Figure 6. Successful `binary-generic` build.**
 
-`[Screenshot missing locally: 06_kernel_build_success.png]`
+![Figure 6. Successful `binary-generic` build.](evidence/screenshots/07-kernel-build-success.png)
 
 After the successful build, the build tree was cleaned and APT's local cache was cleared:
 
@@ -301,7 +311,7 @@ The DKMS post-install hook reported that automatic module installation was skipp
 
 **Figure 7. Custom kernel package installation and boot files.**
 
-`[Screenshot missing locally: 07_kernel_install_success.png]`
+![Figure 7. Custom kernel package installation and boot files.](evidence/screenshots/08-pre-reboot-installation-verification.png)
 
 Evidence files:
 
@@ -352,7 +362,7 @@ The final filesystem status was approximately 62 GB total, 21 GB used, and 39 GB
 
 **Figure 8. Custom kernel running after reboot.**
 
-`[Screenshot missing locally: 08_kernel_boot_verification.png]`
+![Figure 8. Custom kernel running after reboot.](evidence/screenshots/09-kernel-boot-verification.png)
 
 The final proof of a successful compile, installation, and boot is recorded in `18-final-kernel-verification.txt`:
 
@@ -361,7 +371,11 @@ Running Kernel:
 7.0.0-999-generic
 ```
 
-## 12. Evidence index and missing screenshots
+**Figure 9. Final filesystem and EFI-partition verification.**
+
+![Figure 9. Final filesystem and EFI-partition verification.](evidence/screenshots/10-final-filesystem-verification.png)
+
+## 12. Evidence index and screenshot inventory
 
 The terminal evidence was retained outside the Git repository at:
 
@@ -394,7 +408,15 @@ Relevant files are:
 
 The original built packages are under `~/cpe333-kernel-work/pluem/packages/`. The lab-adjusted modules package is under `~/cpe333-kernel-work/pluem/lab-adjusted/`.
 
-The planned screenshot files `01_source_repositories_enabled.png` through `08_kernel_boot_verification.png` were not found in the Linux workspace. They are therefore represented above by explicit placeholders only; no screenshot path or image content has been invented.
+The supplied screenshots are now stored in the repository at:
+
+```text
+mini-project-01/pluem/evidence/screenshots/
+```
+
+The directory contains ten renamed screenshots covering source setup, source preparation, ABI modification, compilation, package generation, installation verification, boot verification, and final filesystem verification. The original capture names and their new report names are mapped in `evidence/screenshots/README.md`.
+
+The only planned screenshot that was not included in the supplied ZIP is the separate build-environment capture, represented by the explicit Figure 1 placeholder above. No screenshot path or image content has been invented.
 
 ## 13. Conclusion
 
