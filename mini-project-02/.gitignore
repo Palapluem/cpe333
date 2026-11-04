@@ -1,0 +1,14 @@
+*.o
+*.ko
+*.mod
+*.mod.c
+*.cmd
+.*.cmd
+modules.order
+Module.symvers
+.tmp_versions/
+tests/faultgen
+tests/threadexit
+tests/threadchurn
+tests/uffdblock
+*.bin
