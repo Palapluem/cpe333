@@ -1,7 +1,7 @@
 # CPE333 Mini-Project 02 – Page-Fault Counter
 
 - [Assignment instructions](instructions.md)
-- [Experiment report](REPORT.md) – design, findings, results, how to reproduce
+- [Development notes](REPORT.md) – design notes and an earlier experiment run from PR #11
 - [Group report evidence](report/) – figures and post-merge records; the report files stay out of git because they list student IDs
 - [Assignment PDF](CPE333_MiniProject2_2026.pdf)
 
