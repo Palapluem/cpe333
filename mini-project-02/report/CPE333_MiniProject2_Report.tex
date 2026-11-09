@@ -174,7 +174,7 @@ This snippet shows the main sequence. The implementation also handles a missing 
 
 Lifetime counters combine \code{min\_flt} and \code{maj\_flt} values from live threads with totals transferred to \code{signal\_struct} when threads exit. The reviewed source uses \code{sig->stats\_lock} and a sequence/retry pattern like \code{/proc/PID/stat}. This avoids counting a thread twice or reading it while its totals are being transferred [2, 5]. These counters cover the thread group from process start.
 
-Live counters start when the user selects a target. On entry to the \code{handle\_mm\_fault()} kretprobe, the module checks whether the faulting process is in scope and saves the flags and backing type for that invocation. On return, it uses the completed result to update minor, major, anonymous, file-backed, or error counters. Keeping entry data with its invocation prevents the module from classifying a fault from a CPU error code before the kernel has handled it [2, 5, 8].
+Live counters start when the user selects a target. On entry to the \code{handle\_mm\_fault()} kretprobe, the module checks whether the faulting process is in scope and saves the flags and backing type for that invocation. On return, it uses the completed result to update minor, major, anonymous, file-backed, or error counters. Keeping entry data with its invocation prevents the module from classifying a fault from a CPU error code before the kernel has handled it [2, 5, 7].
 
 \subsubsection{Target sessions and process identity}
 
