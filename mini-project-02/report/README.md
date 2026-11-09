@@ -16,13 +16,15 @@ The implementation, Lima helper, experiment runner, and regression tests are mai
 
 ## Report files
 
-| File | Purpose |
-|---|---|
-| `CPE333_MiniProject2_Report.docx` | Editable Word or Google Docs version |
-| `CPE333_MiniProject2_Report.tex` | LaTeX source |
-| `output/pdf/CPE333_MiniProject2_Report.pdf` | Final A4 print and reading copy |
-| `assets/` | KMUTT logo and report diagrams |
-| `evidence/post-merge-5fbcb76/` | Test logs, environment details, and eight Terminal captures |
+The cover lists student names and IDs, so `.gitignore` keeps these files out of this public repo. Share them inside the group only.
+
+| File | Purpose | In git |
+|---|---|---|
+| `CPE333_MiniProject2_Report.docx` | Editable Word or Google Docs version | No |
+| `CPE333_MiniProject2_Report.tex` | LaTeX source | No |
+| `output/pdf/CPE333_MiniProject2_Report.pdf` | Final A4 print and reading copy | No |
+| `assets/` | KMUTT logo and report diagrams | Yes |
+| `evidence/post-merge-5fbcb76/` | Test logs, environment details, and eight Terminal captures | Yes |
 
 ## Layout and typography
 

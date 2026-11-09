@@ -2,8 +2,7 @@
 
 - [Assignment instructions](instructions.md)
 - [Experiment report](REPORT.md) – design, findings, results, how to reproduce
-- [Final group report (PDF)](report/output/pdf/CPE333_MiniProject2_Report.pdf) – formatted report and Terminal evidence
-- [Report source and evidence](report/) – LaTeX, editable DOCX, figures, and post-merge records
+- [Group report evidence](report/) – figures and post-merge records; the report files stay out of git because they list student IDs
 - [Assignment PDF](CPE333_MiniProject2_2026.pdf)
 
 `pfcount` is a kernel module. `pfstat` is its command-line front end. Give it a PID and it reports:
@@ -24,7 +23,7 @@ It also checks each number against `/proc/<pid>/maps`, `/proc/<pid>/stat` and `g
 | `tests/regress.sh` | Regression checks for the module (`sudo sh tests/regress.sh`). `tests/threadexit.c`, `threadchurn.c`, `uffdblock.c` are its helpers. |
 | `scripts/experiments.sh` | Runs every experiment in the report, output to `results/`. |
 | `results/` | Raw output of the last experiment run. |
-| `report/` | Final group report, editable sources, and post-merge evidence. |
+| `report/` | Group report figures and post-merge evidence. |
 | `Makefile` | Build, load, demo, and experiments targets. Runs inside Linux. |
 | `vm.sh` | macOS helper for the Lima Ubuntu VM. |
 

@@ -15,3 +15,8 @@
 /evidence/pr11-be83bdc/
 /evidence/post-merge-5fbcb76/02-demo.txt
 /evidence/post-merge-5fbcb76/07-post-merge-summary.png
+
+# Report editions carry student names and IDs; keep them out of the public repo
+/CPE333_MiniProject2_Report.tex
+/CPE333_MiniProject2_Report.docx
+/output/
