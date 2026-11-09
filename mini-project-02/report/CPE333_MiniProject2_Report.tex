@@ -204,7 +204,7 @@ The module sets permissions to 0600 for \code{/proc/pfcount/target} and 0400 for
 \end{tabular}}
 \end{table}
 
-In run mode, the parent stops the child with SIGSTOP, selects it as the target, reads the lifetime baseline, and then allows it to exec the requested command. The program subtracts that baseline before comparing its live counters with \code{wait4()}. The child drops back to the invoking user's privileges before exec. After fork, the program restores the inherited SIGCHLD disposition in the child and uses a cleanup path to reset the target and follow state if execution or waiting fails. The post-merge test also covers a parent that inherited \code{SIGCHLD=SIG\_IGN}.
+In run mode, the child stops itself with SIGSTOP. The parent selects it as the target, reads the lifetime baseline, and then resumes it with SIGCONT so it can exec the requested command. The program subtracts that baseline before comparing its live counters with \code{wait4()}. The child drops back to the invoking user's privileges before exec. After fork, the program restores the inherited SIGCHLD disposition in the child and uses a cleanup path to reset the target and follow state if execution or waiting fails. The post-merge test also covers a parent that inherited \code{SIGCHLD=SIG\_IGN}.
 
 The terminal report below is a separate example for the current shell. It shows the VMA total, virtual size, fault counters, and mapping groups in one view; the E1 measurements that follow use the recorded \code{sleep} and PID 1 runs.
 
