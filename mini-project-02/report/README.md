@@ -35,7 +35,7 @@ The print-ready PDF has 21 A4 portrait pages: cover on physical page 1, contents
 - The report records tests on the merged `beambeambeam/cpe333` source at commit `5fbcb7679298f36e2bae8b7cd3dbe6bf6a609800`.
 - Build/load, demo, regression checks, and experiments E1–E8 passed in Lima with Ubuntu 24.04.5, Linux 6.8.0-142-generic, and ARM64.
 - Eight cropped Terminal screenshots show the required kernel options, module load, the demo, the `pfstat` report, regression checks, the E1–E8 run list, the E7 timeline, and SIGCHLD cleanup. Every `pfcount run` summary shown in the report is now an actual Terminal capture. The `.txt` transcripts retain full output for all recorded runs, including each command, PID, elapsed time, exit status, and measurements. Kernel version and architecture are recorded in the environment log. The demo, E7, and cleanup images match their transcripts by PID and result. The report explains why `faultgen`'s cumulative counts differ from `pfstat`'s baseline-adjusted counts.
-- The build reported a compiler-name mismatch and shared-folder clock skew. BTF generation was skipped because `vmlinux` was unavailable; the module still built and loaded.
+- The module built with its BTF step and loaded; the saved log is `evidence/post-merge-5fbcb76/01-build-load.txt`.
 - GitHub Actions were not configured for the reviewed branch. Results in the report are from manual runs in Lima.
 - The report describes the tested configuration and limitations, including the unmeasured probe overhead, descendant accounting scope, and the permission check that was not rerun after merge.
 

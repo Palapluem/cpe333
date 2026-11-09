@@ -260,7 +260,7 @@ We kept raw outputs and environment details in the \code{evidence/} directory so
 
 Inside Ubuntu, \code{vm.sh} prepared the Lima VM and installed build tools and headers matching \code{uname -r}. The build and load command, \code{make clean \&\& make all \&\& make load}, completed and created \code{/proc/pfcount/maps}, \code{/proc/pfcount/stats}, and \code{/proc/pfcount/target}.
 
-The build reported a compiler-name mismatch despite GCC 13.3.0, shared-folder clock skew, and skipped BTF because \code{vmlinux} was unavailable. Kbuild still completed and the module loaded. Other kernels and architectures were not tested.
+Kbuild compiled and linked the module and generated its BTF data, and the module loaded. Other kernels and architectures were not tested.
 
 \begin{lstlisting}
 ./vm.sh setup
@@ -589,7 +589,7 @@ The module exposes three interfaces under \code{/proc/pfcount}:
 /proc/pfcount/maps
 \end{lstlisting}
 
-The recorded build skipped BTF because \code{vmlinux} was unavailable; compilation and module loading still completed.
+The recorded build compiled, linked, and generated BTF data for \code{pfcount.ko}, and the module loaded.
 
 \Needspace{14\baselineskip}
 \subsection{Step 4: Inspect a live process}

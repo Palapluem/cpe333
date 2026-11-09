@@ -37,5 +37,4 @@
 
 - ไม่มี GitHub CI checks ตั้งไว้สำหรับ branch นี้ ผลเป็นการ build/test ด้วยตนเองใน Lima VM
 - ทดสอบเฉพาะ Linux 6.8 ARM64 และ configuration ที่บันทึกไว้
-- Build มี compiler-name/clock-skew warnings และข้าม BTF เพราะไม่มี `vmlinux`; build/load จบสำเร็จ
 - ไม่ได้ทดสอบใน UTM; โจทย์ไม่ได้กำหนดให้ใช้ UTM
