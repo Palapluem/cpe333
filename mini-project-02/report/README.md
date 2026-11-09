@@ -16,12 +16,14 @@ The implementation, Lima helper, experiment runner, and regression tests are mai
 
 ## Report files
 
-The cover lists student names and IDs, so `.gitignore` keeps these files out of this public repo. Share them inside the group only.
+The cover page lists student names and IDs, so `.gitignore` keeps it and the built editions out of this public repo. Share those files inside the group only.
 
 | File | Purpose | In git |
 |---|---|---|
 | `CPE333_MiniProject2_Report.docx` | Editable Word or Google Docs version | No |
-| `CPE333_MiniProject2_Report.tex` | LaTeX source | No |
+| `CPE333_MiniProject2_Report.tex` | LaTeX source; reads the cover from `frontpage.tex` | Yes |
+| `frontpage.tex` | Cover page with student names and IDs | No |
+| `frontpage.example.tex` | Cover template with placeholder members | Yes |
 | `output/pdf/CPE333_MiniProject2_Report.pdf` | Final A4 print and reading copy | No |
 | `assets/` | KMUTT logo and report diagrams | Yes |
 | `evidence/post-merge-5fbcb76/` | Test logs, environment details, and eight Terminal captures | Yes |
@@ -43,7 +45,7 @@ The print-ready PDF has 21 A4 portrait pages: cover on physical page 1, contents
 
 ## Rebuild the PDF
 
-Install XeLaTeX, `latexmk`, Sarabun, and Menlo. From this folder, build into a temporary directory:
+Install XeLaTeX, `latexmk`, Sarabun, and Menlo. Copy `frontpage.example.tex` to `frontpage.tex` and fill in the members; without it, the PDF builds without a cover. From this folder, build into a temporary directory:
 
 ```sh
 report_build_dir="$(mktemp -d -t cpe333-report)"
