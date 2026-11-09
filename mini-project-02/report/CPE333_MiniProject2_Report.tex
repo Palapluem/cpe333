@@ -260,7 +260,7 @@ We kept raw outputs and environment details in the \code{evidence/} directory so
 
 Inside Ubuntu, \code{vm.sh} prepared the Lima VM and installed build tools and headers matching \code{uname -r}. The build and load command, \code{make clean \&\& make all \&\& make load}, completed and created \code{/proc/pfcount/maps}, \code{/proc/pfcount/stats}, and \code{/proc/pfcount/target}.
 
-Kbuild compiled and linked the module and generated its BTF data, and the module loaded. Other kernels and architectures were not tested.
+Kbuild compiled and linked the module, and the module loaded. The saved log shows a BTF step but does not establish whether BTF data was generated. Other kernels and architectures were not tested.
 
 \begin{lstlisting}
 ./vm.sh setup
@@ -444,7 +444,7 @@ Cleanup & Run \code{make clean} after testing & Passed; test binaries were remov
 \end{tabular}}
 \end{table}
 
-The post-merge regression output is shown alongside these checks. It records the PID-reuse, concurrency, lifetime-counter, and unload cases completed by the suite.
+The regression screenshot and saved log show the same checks, with different reused PIDs: 2613 in the image and 2579 in the log.
 
 \begin{figure}[H]\centering
 \includegraphics[width=.95\linewidth]{evidence/post-merge-5fbcb76/terminal/04-regression-terminal.png}
@@ -589,7 +589,7 @@ The module exposes three interfaces under \code{/proc/pfcount}:
 /proc/pfcount/maps
 \end{lstlisting}
 
-The recorded build compiled, linked, and generated BTF data for \code{pfcount.ko}, and the module loaded.
+The saved log records compilation and linking of \code{pfcount.ko}, followed by a BTF step and module loading. It does not establish whether BTF data was generated.
 
 \Needspace{14\baselineskip}
 \subsection{Step 4: Inspect a live process}
@@ -639,7 +639,7 @@ Unload the module, remove generated binaries, and stop Lima. These commands pres
 ./vm.sh stop
 \end{lstlisting}
 
-The evidence bundle contains environment, build/load, demo, regression, cleanup, and E1 to E8 records, plus eight Terminal captures. Full output remains in searchable text files; the demo, E7, and cleanup images match their transcripts by PID.
+The evidence bundle contains environment, build/load, demo, regression, cleanup, and E1 to E8 records, plus eight Terminal captures. The demo, E7, and cleanup images match their transcripts by PID. The shell \code{pfstat} example is available only as a screenshot.
 
 \endgroup
 \end{document}
