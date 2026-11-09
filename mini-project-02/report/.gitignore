@@ -17,6 +17,7 @@
 /evidence/post-merge-5fbcb76/07-post-merge-summary.png
 
 # Cover page and built editions carry student names and IDs; keep them out of the public repo
-/frontpage.tex
+/frontpage/*
+!/frontpage/frontpage.example.tex
 /CPE333_MiniProject2_Report.docx
 /output/

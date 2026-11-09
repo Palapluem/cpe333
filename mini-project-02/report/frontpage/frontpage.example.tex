@@ -1,6 +1,7 @@
-% Template for frontpage.tex. Copy it to frontpage.tex and fill in the members.
+% Template for frontpage/frontpage.tex. Copy it to frontpage.tex in this folder and fill in the members.
+% Put KMUTT_Logo.png in frontpage/assets/; without it, the cover builds without the logo.
 \begin{titlepage}\thispagestyle{empty}\centering
-\includegraphics[width=3.5cm]{assets/KMUTT_Logo.png}\par\vspace{.10cm}
+\IfFileExists{frontpage/assets/KMUTT_Logo.png}{\includegraphics[width=3.5cm]{frontpage/assets/KMUTT_Logo.png}\par\vspace{.10cm}}{}
 {\fontsize{14.5}{17.5}\selectfont MINI-PROJECT 2\par}
 \vspace{.04cm}
 {\fontsize{13.5}{16.5}\selectfont Virtual Memory\par}

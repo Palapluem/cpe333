@@ -46,7 +46,7 @@
 \AtBeginDocument{\fontsize{12}{15.6}\selectfont}
 \begin{document}
 \newgeometry{top=1.7cm,bottom=2.35cm,left=2.5cm,right=2.5cm,headheight=16pt}
-\InputIfFileExists{frontpage.tex}{}{\typeout{frontpage.tex not found: building without the cover page}}
+\InputIfFileExists{frontpage/frontpage.tex}{}{\typeout{frontpage/frontpage.tex not found: building without the cover page}}
 \restoregeometry
 \clearpage\pagenumbering{roman}
 \tableofcontents
