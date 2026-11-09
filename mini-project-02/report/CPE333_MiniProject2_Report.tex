@@ -413,17 +413,17 @@ The shell and GCC launch other processes. In process-only mode, \code{pfstat} co
 
 \code{wait4()} does not always include every descendant. A child may be auto-reaped when its parent sets \code{SIGCHLD} to \code{SIG\_IGN}. A child reparented before it is waited for may also be absent from the reference [4, 9]. The CLI therefore labels the reference as waited descendants only and explains when the live count exceeds it. The post-merge cleanup test covers the inherited \code{SIGCHLD=SIG\_IGN} case.
 
-The saved E8 outputs make the scope difference visible for the same shell and compiler workloads:
+The minor-fault lines from the saved E8 outputs show the scope difference for the same shell and compiler workloads. Only the column padding is shortened:
 
 \begin{lstlisting}
 $ sudo tools/pfstat -- sh -c 'ls -R /usr/include >/dev/null'
-  Minor faults 258; 135 below getrusage() because child usage is excluded
+  Minor page faults    258   differs by -135 vs getrusage()
 $ sudo tools/pfstat -f -- sh -c 'ls -R /usr/include >/dev/null'
-  Minor faults 390; matches wait4() for waited descendants
+  Minor page faults    390   match vs wait4(), waited descendants only
 $ sudo tools/pfstat -- gcc -O2 -o /tmp/fg tests/faultgen.c
-  Minor faults 287; 5,700 below getrusage() because child usage is excluded
+  Minor page faults    287   differs by -5700 vs getrusage()
 $ sudo tools/pfstat -f -- gcc -O2 -o /tmp/fg tests/faultgen.c
-  Minor faults 5,971; matches wait4() for waited descendants
+  Minor page faults  5,971   match vs wait4(), waited descendants only
 \end{lstlisting}
 
 \Needspace{6\baselineskip}
