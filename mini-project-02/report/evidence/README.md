@@ -29,7 +29,7 @@
 | `terminal/07-e7-timeline-terminal.png` | interval samples และ exit summary จาก E7 run PID 2286, ตรงกับ `experiment-results/e7-timeline.txt` | Problem 2, Step 2: E7 virtual size and RSS over time |
 | `terminal/08-sigchld-cleanup-terminal.png` | `pfcount run` ของ PID 2513 และสถานะหลัง cleanup: `follow=N`, `pid: 0`, `state: idle` | Problem 2, Step 3: Post-merge checks |
 
-`02-demo-terminal-capture.txt` เป็น transcript ฉบับเต็มของ demo run PID 2508 (16,521 minor / 8,193 major faults) พร้อม workload checkpoints, interval samples และ rates ภาพและ transcript เป็นการรันรอบเดียวกัน ส่วน `experiment-results/e7-timeline.txt` เป็น transcript ของ E7 run PID 2286 และ `04-sigchld-cleanup.txt` เก็บผล run PID 2513 ที่รับ `SIGCHLD=SIG_IGN` มาจาก parent; ทั้งสองรายการมีภาพ Terminal ที่ตรงกับตัวเลขและสถานะใน transcript
+`02-demo-terminal-capture.txt` เป็น transcript ฉบับเต็มของ demo run PID 2508 (16,521 minor / 8,193 major faults) พร้อม workload checkpoints, interval samples และ rates ภาพและ transcript เป็นการรันรอบเดียวกัน ส่วน `experiment-results/e7-timeline.txt` เป็น transcript ของ E7 run PID 2286 ซึ่งรันคำสั่งเดียวกันแยกจากรอบสคริปต์ที่ได้ E1–E6 และ E8 (PID 10605–10663) และ `04-sigchld-cleanup.txt` เก็บผล run PID 2513 ที่รับ `SIGCHLD=SIG_IGN` มาจาก parent; ทั้งสองรายการมีภาพ Terminal ที่ตรงกับตัวเลขและสถานะใน transcript
 
 ไฟล์จับหน้าจอเต็มเดสก์ท็อป ภาพจากรอบเก่าที่ตัวเลขไม่ตรงกับ post-merge run และ log review ก่อน merge ถูกตัดออกจากชุดส่งงาน
 

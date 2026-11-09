@@ -309,7 +309,7 @@ E1 compared the report with procfs. E2 to E6 varied anonymous mappings, file cac
 
 \begin{figure}[H]\centering
 \includegraphics[width=.95\linewidth]{evidence/post-merge-5fbcb76/terminal/06-experiments-terminal.png}
-\caption{Terminal summary of the E1 to E8 cases run by the experiment script. Numeric results appear in the following tables and discussion.}
+\caption{Terminal summary of the E1 to E8 cases run by the experiment script. Numeric results appear in the following tables and discussion; the E7 values come from a separate run of the same command.}
 \end{figure}
 
 \Needspace{12\baselineskip}
@@ -386,7 +386,7 @@ When the program created an anonymous mapping, virtual size grew from about 2.2 
 
 The first watch-mode sample can occur between fork and exec or while the address space is changing. A sampled maximum should therefore not be treated as the child program's peak without checking the exit-time snapshot. The module reads the peak from the mm counters when the process exits. The reported minor/second and major/second rates use the counter difference divided by elapsed time between samples.
 
-The Terminal capture shows the full sample sequence and the matching exit-time totals used for this timeline. The searchable transcript is in \code{evidence/post-merge-5fbcb76/experiment-results/e7-timeline.txt}.
+E7 comes from a separate run of the same command (PID 2286), not from the scripted batch that produced E1 to E6 and E8 (PIDs 10605 to 10663). The Terminal capture shows the full sample sequence and the matching exit-time totals used for this timeline. The searchable transcript is in \code{evidence/post-merge-5fbcb76/experiment-results/e7-timeline.txt}.
 
 \begin{figure}[H]\centering
 \includegraphics[width=.98\linewidth]{evidence/post-merge-5fbcb76/terminal/07-e7-timeline-terminal.png}
