@@ -402,7 +402,7 @@ The Terminal capture shows the full sample sequence and the matching exit-time t
 \hline
 \rowcolor{SoftGreen} \textbf{Command} & \textbf{Minor} & \textbf{Major} & \textbf{Reference comparison} \\ \hline
 \code{python3 -c pass} & 1,234 & 0 & Matches \code{getrusage()} \\ \hline
-\code{sh + ls}, without \code{-f} & 258 & 0 & 135 below \code{wait4()} \\ \hline
+\code{sh + ls}, without \code{-f} & 258 & 0 & 135 below \code{getrusage()} \\ \hline
 \code{sh + ls}, with \code{-f} & 390 & 0 & Matches \code{wait4()} \\ \hline
 \code{gcc}, without \code{-f} & 287 & 0 & 5,700 below \code{getrusage()} \\ \hline
 \code{gcc}, with \code{-f} & 5,971 & 0 & Matches \code{wait4()} \\ \hline
