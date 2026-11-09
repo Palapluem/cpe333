@@ -27,6 +27,7 @@ The cover page lists student names and IDs, so `.gitignore` keeps it and the bui
 | `frontpage/assets/` | KMUTT logo for the cover | No |
 | `output/pdf/CPE333_MiniProject2_Report.pdf` | Final A4 print and reading copy | No |
 | `assets/` | Report diagrams | Yes |
+| `.latexmkrc` | Makes `latexmk` use XeLaTeX, also from editors that pass `-pdf` | Yes |
 | `evidence/post-merge-5fbcb76/` | Test logs, environment details, and eight Terminal captures | Yes |
 
 ## Layout and typography
