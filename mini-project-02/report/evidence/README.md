@@ -24,7 +24,7 @@
 | `terminal/02-build-load-terminal.png` | การโหลดโมดูลและ proc interfaces | Problem 2, Step 1: Build and load |
 | `terminal/03-demo-terminal.png` | interval samples และ exit summary จาก demo run PID 2508 (16,521 minor / 8,193 major), ตรงกับ `02-demo-terminal-capture.txt` | Problem 2, Step 1: End-to-end demo |
 | `terminal/04-regression-terminal.png` | ผล retarget, PID reuse, thread exit, lifetime reads และ unload | Problem 2, Step 3: Post-merge checks |
-| `terminal/05-pfstat-report-terminal.png` | VMA, virtual size, RSS, fault counts และ mapping groups | Problem 1, Step 2: How the tool works |
+| `terminal/05-pfstat-report-terminal.png` | VMA, virtual size, RSS, fault counts และ mapping groups ของ bash PID 1622 (มีเฉพาะภาพ ไม่มี transcript) | Problem 1, Step 2: How the tool works |
 | `terminal/06-experiments-terminal.png` | รายการกรณี E1–E8 ที่สคริปต์ทดลองเรียกใช้ | Problem 2, Step 1: How we checked the results |
 | `terminal/07-e7-timeline-terminal.png` | interval samples และ exit summary จาก E7 run PID 2286, ตรงกับ `experiment-results/e7-timeline.txt` | Problem 2, Step 2: E7 virtual size and RSS over time |
 | `terminal/08-sigchld-cleanup-terminal.png` | `pfcount run` ของ PID 2513 และสถานะหลัง cleanup: `follow=N`, `pid: 0`, `state: idle` | Problem 2, Step 3: Post-merge checks |
