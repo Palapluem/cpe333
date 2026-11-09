@@ -305,7 +305,7 @@ The demo ran \code{sudo tools/pfstat -w 0.5 -- tests/faultgen} with the phases \
 
 We compared region counts and address-space sizes using a process that remained stable while the module and procfs were read. In run mode, we compared the final live counters with the child usage returned after exit, after subtracting the lifetime baseline. Agreement between these interfaces supports the observed behavior in the tested cases; both still rely on counters maintained by the same Linux kernel.
 
-E1 compared the report with procfs. E2 to E6 varied anonymous mappings, file cache, readahead, and THP. E7 recorded virtual size and RSS over time and then unmapped the regions. E8 compared ordinary programs with and without descendant tracking. The post-merge regression suite covered retargeting, PID reuse, simultaneous thread exit, lifetime counter reads, module unload during a blocked fault, and cleanup after inherited SIGCHLD settings. Permission checks and interval parameters were present in earlier PR evidence; the post-merge suite summarized here did not rerun the non-root permission case.
+E1 compared the report with procfs. E2 to E6 varied anonymous mappings, file cache, readahead, and THP. E7 recorded virtual size and RSS over time and then unmapped the regions. E8 compared ordinary programs with and without descendant tracking. The post-merge regression suite covered retargeting, PID reuse, simultaneous thread exit, lifetime counter reads, module unload during a blocked fault, and cleanup after inherited SIGCHLD settings. The post-merge suite did not test access by a non-root user, and the submitted evidence does not include that case.
 
 \begin{figure}[H]\centering
 \includegraphics[width=.95\linewidth]{evidence/post-merge-5fbcb76/terminal/06-experiments-terminal.png}
@@ -468,7 +468,7 @@ Inherited SIGCHLD & Run \code{pfstat -f -- /bin/true} with parent \code{SIGCHLD=
 
 The merged source retains a reference to the session that accepted each fault until the return handler completes. It identifies targets by \code{struct pid}, uses \code{group\_dead} to detect the final thread, and protects lifetime totals with \code{stats\_lock}. It also releases sessions left by canceled probes during module unload [2]. In run mode, the program temporarily sets SIGCHLD to the default disposition while waiting and restores the child's inherited disposition before exec. The post-merge test confirmed that \code{wait4()} still collects the child status and that cleanup returns the target and follow state to idle and N.
 
-The source sets \code{0600} on \code{/proc/pfcount/target} and \code{0400} on \code{stats} and \code{maps}. A non-root permission check appears in the pre-merge evidence, but we did not rerun that case after merge, so it is not listed as a post-merge regression result.
+The source sets \code{0600} on \code{/proc/pfcount/target} and \code{0400} on \code{stats} and \code{maps}. We did not test access by a non-root user after merge, so the submitted evidence does not include that case.
 
 \clearpage
 The inherited SIGCHLD cleanup check also captured the process summary and the final idle state of the module. The full transcript is in \code{evidence/post-merge-5fbcb76/04-sigchld-cleanup.txt}.
