@@ -21,7 +21,7 @@ The cover page lists student names and IDs, so `.gitignore` keeps it and the bui
 | File | Purpose | In git |
 |---|---|---|
 | `CPE333_MiniProject2_Report.docx` | Editable Word or Google Docs version | No |
-| `CPE333_MiniProject2_Report.tex` | LaTeX source; reads the cover from `frontpage.tex` | Yes |
+| `report.tex` | LaTeX source; reads the cover from `frontpage.tex` | Yes |
 | `frontpage.tex` | Cover page with student names and IDs | No |
 | `frontpage.example.tex` | Cover template with placeholder members | Yes |
 | `output/pdf/CPE333_MiniProject2_Report.pdf` | Final A4 print and reading copy | No |
@@ -50,8 +50,8 @@ Install XeLaTeX, `latexmk`, Sarabun, and Menlo. Copy `frontpage.example.tex` to 
 ```sh
 report_build_dir="$(mktemp -d -t cpe333-report)"
 latexmk -xelatex -interaction=nonstopmode -halt-on-error \
-  -outdir="$report_build_dir" CPE333_MiniProject2_Report.tex
-cp "$report_build_dir/CPE333_MiniProject2_Report.pdf" output/pdf/
+  -outdir="$report_build_dir" report.tex
+cp "$report_build_dir/report.pdf" output/pdf/CPE333_MiniProject2_Report.pdf
 rm -rf "$report_build_dir"
 ```
 
