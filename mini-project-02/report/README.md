@@ -12,7 +12,7 @@ This report presents the group’s Virtual Memory project: a Linux tool for insp
 
 ## Source code
 
-The implementation, Lima helper, experiment runner, and regression tests are maintained in the team repository at the exact revision used for the report: [Mini-Project 2 source at merge commit 5fbcb767](https://github.com/beambeambeam/cpe333/tree/5fbcb7679298f36e2bae8b7cd3dbe6bf6a609800/mini-project-02). This folder keeps the report and reviewed evidence alongside the project source without duplicating the implementation.
+The kernel module and tools are maintained in the team repository at [merge commit 5fbcb767](https://github.com/beambeambeam/cpe333/tree/5fbcb7679298f36e2bae8b7cd3dbe6bf6a609800/mini-project-02). The follow-up regression run uses the updated `tests/regress.sh` in this PR, which checks for a new unload message in `dmesg` instead of relying on the last five kernel-log lines. This folder keeps the report and reviewed evidence alongside the project source without duplicating the implementation.
 
 ## Report files
 
@@ -39,8 +39,8 @@ The print-ready PDF has 21 A4 portrait pages: cover on physical page 1, contents
 ## Source and test results
 
 - The report records tests on the merged `beambeambeam/cpe333` source at commit `5fbcb7679298f36e2bae8b7cd3dbe6bf6a609800`.
-- Build/load, demo, regression checks, and experiments E1–E8 passed in Lima with Ubuntu 24.04.5, Linux 6.8.0-142-generic, and ARM64.
-- Eight cropped Terminal screenshots show the required kernel options, module load, the demo, the `pfstat` report, regression checks, the E1–E8 run list, the E7 timeline, and SIGCHLD cleanup. Text files retain the recorded output, including commands, PIDs, elapsed times, exit statuses, and measurements where captured. The shell `pfstat` report (PID 1622) is kept only as a screenshot. The demo, E7, and cleanup images match their transcripts by PID and result; the regression screenshot and log show different PID-reuse cases (2613 and 2579). The report explains why `faultgen`'s cumulative counts differ from `pfstat`'s baseline-adjusted counts.
+- The original build/load, demo, and E1–E8 evidence was collected in Lima with Ubuntu 24.04.5, Linux 6.8.0-142-generic, and ARM64. A follow-up regression run on Linux 6.8.0-147-generic passed all five checks.
+- Eight cropped Terminal screenshots show the required kernel options, module load, the demo, the `pfstat` report, regression checks, the E1–E8 run list, the E7 timeline, and SIGCHLD cleanup. Text files retain the recorded output, including commands, PIDs, elapsed times, exit statuses, and measurements where captured. The shell `pfstat` report (PID 1622) is kept only as a screenshot. The demo, regression, E7, and cleanup images match their transcripts by PID and result; the follow-up regression PID is 26873. The report explains why `faultgen`'s cumulative counts differ from `pfstat`'s baseline-adjusted counts.
 - The module built and loaded. The saved log, `evidence/post-merge-5fbcb76/01-build-load.txt`, shows a BTF step but does not establish whether BTF data was generated.
 - GitHub Actions were not configured for the reviewed branch. Results in the report are from manual runs in Lima.
 - The report describes the tested configuration and limitations, including the unmeasured probe overhead, descendant accounting scope, and the permission check that was not rerun after merge.

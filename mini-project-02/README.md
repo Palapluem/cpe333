@@ -23,7 +23,7 @@ It also checks each number against `/proc/<pid>/maps`, `/proc/<pid>/stat` and `g
 | `tests/regress.sh` | Regression checks for the module (`sudo sh tests/regress.sh`). `tests/threadexit.c`, `threadchurn.c`, `uffdblock.c` are its helpers. |
 | `scripts/experiments.sh` | Runs every experiment in the report, output to `results/`. |
 | `results/` | Raw output of the last experiment run. |
-| `report/` | Group report LaTeX source, figures, and post-merge evidence. |
+| `report/` | Group report LaTeX source, figures, and post-merge evidence. The private cover and built PDF/DOCX remain local. |
 | `Makefile` | Build, load, demo, and experiments targets. Runs inside Linux. |
 | `vm.sh` | macOS helper for the Lima Ubuntu VM. |
 

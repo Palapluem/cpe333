@@ -55,7 +55,7 @@
 \Needspace{6\baselineskip}
 \section{Problem 1: Project scope and design}
 
-The project is a Linux tool for inspecting a process's \keyterm{memory regions}, \keyterm{virtual address space}, and \keyterm{minor and major page faults}. It combines the \code{pfcount} kernel module, the \code{pfstat} command-line program, and the \code{faultgen} workload generator. We tested the merged PR \#11 source on Ubuntu 24.04.5 with Linux 6.8.0-142-generic on ARM64. The build, demo, regression suite, and experiments E1 to E8 all completed in that environment.
+The project is a Linux tool for inspecting a process's \keyterm{memory regions}, \keyterm{virtual address space}, and \keyterm{minor and major page faults}. It combines the \code{pfcount} kernel module, the \code{pfstat} command-line program, and the \code{faultgen} workload generator. The original build, demo, and E1 to E8 measurements used the merged PR \#11 source on Ubuntu 24.04.5 with Linux 6.8.0-142-generic on ARM64. After review, we reran the regression suite on Linux 6.8.0-147-generic; all five checks passed, as described in Problem 2, Step 3.
 
 These measurements describe different things. A process can reserve a large virtual range before its pages become resident, and file cache, readahead, fault-around, and Transparent Huge Pages (THP) can all change the recorded fault counts. The results describe the tested kernel configuration; they do not establish compatibility with other kernels or measure probe overhead.
 
@@ -199,6 +199,7 @@ In this shell example, the report finds 36 VMAs and 8.7 MB of virtual space. Bot
 \rowcolor{SoftGreen} \textbf{Item} & \textbf{Value} \\ \hline
 Host and virtual machine & macOS host; Lima VM with 4 reported vCPUs and 3,905 MB guest memory \\ \hline
 Guest and kernel & Ubuntu 24.04.5 LTS; Linux 6.8.0-142-generic; aarch64 \\ \hline
+Follow-up regression & Linux 6.8.0-147-generic; five checks passed; PID 26873 reused \\ \hline
 Compiler & GCC 13.3.0 \\ \hline
 Page size and THP & 4,096 bytes; THP mode set to \code{madvise} \\ \hline
 Fault-around and readahead & 65,536 bytes and 128 KiB, respectively \\ \hline
@@ -398,7 +399,7 @@ $ sudo tools/pfstat -f -- gcc -O2 -o /tmp/fg tests/faultgen.c
 \Needspace{6\baselineskip}
 \subsection{Step 3: Post-merge checks}
 
-We reviewed and tested the source at merge commit \code{5fbcb767}; the measurements below come from that revision, not from a pre-merge branch. The original review focused on target changes during faults, PID reuse, concurrent thread exit, lifetime-counter aggregation, and session cleanup during module unload.
+The kernel module under test is from merge commit \code{5fbcb767}. For the follow-up run, we updated \code{tests/regress.sh} to count new \code{dmesg} entries after unload instead of searching only the last five kernel-log lines. This makes the unload check robust to unrelated kernel messages. The regression suite covers target changes during faults, PID reuse, concurrent thread exit, lifetime-counter aggregation, and session cleanup during module unload.
 
 \begin{table}[H]\centering
 {\fontsize{12}{15.6}\selectfont\arrayrulecolor{RuleGray}
@@ -413,11 +414,11 @@ Cleanup & Run \code{make clean} after testing & Passed; test binaries were remov
 \end{tabular}}
 \end{table}
 
-The regression screenshot and saved log show the same checks, with different reused PIDs: 2613 in the image and 2579 in the log.
+The follow-up regression run used Linux 6.8.0-147-generic. All five checks passed, including PID reuse (PID 26873). The Terminal capture and \code{evidence/post-merge-5fbcb76/03-regression.txt} are from the same run.
 
 \begin{figure}[H]\centering
 \includegraphics[width=.95\linewidth]{evidence/post-merge-5fbcb76/terminal/04-regression-terminal.png}
-\caption{Terminal results from the post-merge lifecycle and concurrency regression suite.}
+\caption{Follow-up regression results from Linux 6.8.0-147-generic; PID 26873 was reused and all five checks passed.}
 \end{figure}
 
 \begin{table}[H]\centering
