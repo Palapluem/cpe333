@@ -55,7 +55,7 @@
 \Needspace{6\baselineskip}
 \section{Problem 1: Project scope and design}
 
-The project is a Linux tool for inspecting a process's \keyterm{memory regions}, \keyterm{virtual address space}, and \keyterm{minor and major page faults}. It combines the \code{pfcount} kernel module, the \code{pfstat} command-line program, and the \code{faultgen} workload generator. The original build, demo, and E1 to E8 measurements used the merged PR \#11 source on Ubuntu 24.04.5 with Linux 6.8.0-142-generic on ARM64. After review, we reran the regression suite on Linux 6.8.0-147-generic; all five checks passed, as described in Problem 2, Step 3.
+The project is a Linux tool for inspecting a process's \keyterm{memory regions}, \keyterm{virtual address space}, and \keyterm{minor and major page faults}. It combines the \code{pfcount} kernel module, the \code{pfstat} command-line program, and the \code{faultgen} workload generator. The reported measurements came from the merged PR \#11 source on Ubuntu 24.04.5 with Linux 6.8.0-142-generic on ARM64. A full verification of revised PR head \code{ed0a7a6} passed on Linux 6.8.0-147-generic; its logs are in \code{evidence/recheck-2026-11-11/}. The measurement tables and chart retain the original run.
 
 These measurements describe different things. A process can reserve a large virtual range before its pages become resident, and file cache, readahead, fault-around, and Transparent Huge Pages (THP) can all change the recorded fault counts. The results describe the tested kernel configuration; they do not establish compatibility with other kernels or measure probe overhead.
 
@@ -415,6 +415,8 @@ Cleanup & Run \code{make clean} after testing & Passed; test binaries were remov
 \end{table}
 
 The follow-up regression run used Linux 6.8.0-147-generic. All five checks passed, including PID reuse (PID 26873). The Terminal capture and \code{evidence/post-merge-5fbcb76/03-regression.txt} are from the same run.
+
+The current PR checkout was fully rechecked on 11 November 2026. Build/load, demo, regression, E1 to E8, live-process comparison, standalone E7, and inherited-SIGCHLD cleanup all exited successfully; the fresh records are in \code{evidence/recheck-2026-11-11/}. The E1 to E8 measurements and timeline above remain those collected on Linux 6.8.0-142-generic.
 
 \begin{figure}[H]\centering
 \includegraphics[width=.95\linewidth]{evidence/post-merge-5fbcb76/terminal/04-regression-terminal.png}

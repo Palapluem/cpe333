@@ -39,9 +39,12 @@ The print-ready PDF has 21 A4 portrait pages: cover on physical page 1, contents
 ## Source and test results
 
 - The report records tests on the merged `beambeambeam/cpe333` source at commit `5fbcb7679298f36e2bae8b7cd3dbe6bf6a609800`.
-- The original build/load, demo, and E1–E8 evidence was collected in Lima with Ubuntu 24.04.5, Linux 6.8.0-142-generic, and ARM64. A follow-up regression run on Linux 6.8.0-147-generic passed all five checks.
+- The original measurements were collected in Lima with Ubuntu 24.04.5, Linux 6.8.0-142-generic, and ARM64. On 11 November 2026, we reran the full workflow from PR head `ed0a7a6` on Linux 6.8.0-147-generic: build/load, demo, all five regression checks, E1–E8, live-process comparison, a separate E7 timeline, and SIGCHLD cleanup all passed. The fresh logs are in `evidence/recheck-2026-11-11/`; the report’s measurement tables and chart remain tied to the original run.
+- Rebuilt the LaTeX report on 11 November 2026. The output is 21 A4 pages; build details are in `evidence/recheck-2026-11-11/09-latex-build.txt`.
 - Eight cropped Terminal screenshots show the required kernel options, module load, the demo, the `pfstat` report, regression checks, the E1–E8 run list, the E7 timeline, and SIGCHLD cleanup. Text files retain the recorded output, including commands, PIDs, elapsed times, exit statuses, and measurements where captured. The shell `pfstat` report (PID 1622) is kept only as a screenshot. The demo, regression, E7, and cleanup images match their transcripts by PID and result; the follow-up regression PID is 26873. The report explains why `faultgen`'s cumulative counts differ from `pfstat`'s baseline-adjusted counts.
-- The module built and loaded. The saved log, `evidence/post-merge-5fbcb76/01-build-load.txt`, shows a BTF step but does not establish whether BTF data was generated.
+- The original build log shows a BTF step but does not establish whether BTF data was generated. In the new verification log, BTF generation was skipped because the guest did not have `vmlinux`; the module still built and loaded. GCC reported different compiler executable names, but both versions were 13.3.0.
+- The rerun ended by unloading the module, running `make clean`, and stopping Lima. The shutdown log records the instance stopped with exit status 0; Lima also emitted a closed-network-connection message as the host agent shut down.
+- The recheck bundle includes cropped Terminal captures of the LaTeX build and matching regression run, alongside the searchable logs.
 - GitHub Actions were not configured for the reviewed branch. Results in the report are from manual runs in Lima.
 - The report describes the tested configuration and limitations, including the unmeasured probe overhead, descendant accounting scope, and the permission check that was not rerun after merge.
 
